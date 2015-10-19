@@ -34,7 +34,8 @@ fi
 
 tar xfv avrdude-6.1.tar.gz
 
-cd avrdude-6.1
+mv avrdude-6.1 avrdude-source-6.1
+cd avrdude-source-6.1
 for p in ../avrdude-patches/*.patch; do echo Applying $p; patch -p1 < $p; done
 
 #if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
@@ -81,7 +82,7 @@ CONFARGS=" \
 #		--enable-arduinotre"
 #fi
 
-CFLAGS="-w -O2 $CFLAGS" CXXFLAGS="-w -O2 $CXXFLAGS" LDFLAGS="-s $LDFLAGS" ../avrdude-6.1/configure $CONFARGS > avrdude.configure.output
+CFLAGS="-w -O2 $CFLAGS" CXXFLAGS="-w -O2 $CXXFLAGS" LDFLAGS="-s $LDFLAGS" ../avrdude-source-6.1/configure $CONFARGS > avrdude.configure.output
 
 cat avrdude.configure.output
 DOESNTHAVELIBUSB="DON'T HAVE libusb"
