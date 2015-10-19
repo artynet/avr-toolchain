@@ -73,11 +73,11 @@ CONFARGS=" \
 	--prefix=$PREFIX \
 	--enable-linuxgpio"
 
-if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
-then
-	CONFARGS="$CONFARGS \
-		--enable-arduinotre"
-fi
+#if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
+#then
+#	CONFARGS="$CONFARGS \
+#		--enable-arduinotre"
+#fi
 
 CFLAGS="-w -O2 $CFLAGS" CXXFLAGS="-w -O2 $CXXFLAGS" LDFLAGS="-s $LDFLAGS" ../avrdude-6.1/configure $CONFARGS > avrdude.configure.output
 
@@ -117,4 +117,6 @@ then
 	then
 		sed -i 's/LD_LIBRARY_PATH/DYLD_LIBRARY_PATH/g' avrdude
 	fi
+    cd ../etc
+    cp ../../avrdude-files/avrdude.conf .
 fi
