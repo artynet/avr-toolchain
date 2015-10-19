@@ -1,8 +1,6 @@
-diff --git pindefs.h pindefs.h
-index ce4bdf0..7e7206e 100644
---- pindefs.h
-+++ pindefs.h
-@@ -59,7 +59,7 @@ enum {
+--- a/pindefs.h	2014-03-13 00:03:19.000000000 +0100
++++ b/pindefs.h	2015-10-19 11:15:32.000000000 +0200
+@@ -59,7 +59,7 @@
  #define PIN_MIN     0   /* smallest allowed pin number */
  #define PIN_MAX     31  /* largest allowed pin number */
  
@@ -11,3 +9,8 @@ index ce4bdf0..7e7206e 100644
  /* Embedded systems might have a lot more gpio than only 0-31 */
  #undef PIN_MAX
  #define PIN_MAX     255 /* largest allowed pin number */
+@@ -199,4 +199,3 @@
+ 
+ 
+ #endif
+-
