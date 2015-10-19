@@ -35,11 +35,13 @@ fi
 tar xfv avrdude-6.1.tar.gz
 
 cd avrdude-6.1
-for p in ../avrdude-patches/*.patch; do echo Applying $p; patch -p0 < $p; done
-if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
-then
-	for p in ../avrdude-patches/*.patch.optional; do echo Applying $p; patch -p0 < $p; done
-fi
+for p in ../avrdude-patches/*.patch; do echo Applying $p; patch -p1 < $p; done
+
+#if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
+#then
+#	for p in ../avrdude-patches/*.patch.optional; do echo Applying $p; patch -p0 < $p; done
+#fi
+
 ./bootstrap
 cd -
 
@@ -115,7 +117,7 @@ then
 	cp ../../avrdude-files/avrdude .
 	if [ `uname -s` == "Darwin" ]
 	then
-		sed -i 's/LD_LIBRARY_PATH/DYLD_LIBRARY_PATH/g' avrdude
+		sed -i -e 's/LD_LIBRARY_PATH/DYLD_LIBRARY_PATH/g' avrdude
 	fi
     cd ../etc
     cp ../../avrdude-files/avrdude.conf .
