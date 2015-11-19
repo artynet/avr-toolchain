@@ -27,15 +27,15 @@ cd -
 
 export PATH="$TOOLS_BIN_PATH:$PATH"
 
-if [[ ! -f avrdude-6.1.tar.gz  ]] ;
+if [[ ! -f avrdude-6.2.tar.gz  ]] ;
 then
-	wget http://download.savannah.gnu.org/releases/avrdude/avrdude-6.1.tar.gz
+	wget http://download.savannah.gnu.org/releases/avrdude/avrdude-6.2.tar.gz
 fi
 
-tar xfv avrdude-6.1.tar.gz
+tar xfv avrdude-6.2.tar.gz
 
-mv avrdude-6.1 avrdude-source-6.1
-cd avrdude-source-6.1
+mv avrdude-6.2 avrdude-source-6.2
+cd avrdude-source-6.2
 for p in ../avrdude-patches/*.patch; do echo Applying $p; patch -p1 < $p; done
 
 #if [[ `uname -s` != CYGWIN* && `uname -s` != MINGW* ]]
@@ -82,7 +82,7 @@ CONFARGS=" \
 #		--enable-arduinotre"
 #fi
 
-CFLAGS="-w -O2 $CFLAGS" CXXFLAGS="-w -O2 $CXXFLAGS" LDFLAGS="-s $LDFLAGS" ../avrdude-source-6.1/configure $CONFARGS > avrdude.configure.output
+CFLAGS="-w -O2 $CFLAGS" CXXFLAGS="-w -O2 $CXXFLAGS" LDFLAGS="-s $LDFLAGS" ../avrdude-source-6.2/configure $CONFARGS > avrdude.configure.output
 
 cat avrdude.configure.output
 DOESNTHAVELIBUSB="DON'T HAVE libusb"
